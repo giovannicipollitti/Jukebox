@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jukebox</title>
+  <title>Jukebox by Dj Cipo</title>
   <style>
     body {
       margin: 0;
@@ -12,6 +12,8 @@
       color: #fff;
       text-align: center;
     }
+
+    /* Banner scorrevole con sfumatura blu */
     header {
       background: linear-gradient(180deg, #001f4d, #003b8e, #0047AB);
       padding: 15px;
@@ -33,6 +35,7 @@
       0%   { transform: translateX(0); }
       100% { transform: translateX(-100%); }
     }
+
     .file {
       margin: 14px;
       padding: 9px;
@@ -49,63 +52,29 @@
       border-radius: 8px;
       color: #fff;
       text-decoration: none;
-      margin: 0 auto 8px;
+      margin-bottom: 8px;
       transition: background 0.3s;
-      max-width: 600px;
     }
-    .file a:hover { background: #265ecf; }
-    audio { display: none; }
-    .toast {
-      position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
-      padding: 10px 14px; background: #111; color: #fff; border-radius: 999px;
-      font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .25s;
+    .file a:hover {
+      background: #265ecf;
     }
-    .toast.show { opacity: .95; }
   </style>
 </head>
 <body>
   <header>
-    <span>Buongiorno sei pronto per la tua camminata quotidiana?</span>
+    <span>Sei pronto per la tua camminata quotidiana? Non strafare e divertiti...</span>
   </header>
 
   <div class="file">
-    <a class="play" href="883.mp3">Cliccami</a>
+    <a href="https://drive.google.com/file/d/1b4CNJzTVmkZQ-_neXcgEfwNM0dKH_CRF/view?usp=drive_link" target="_blank">Cliccami</a>
   </div>
 
-  <audio id="hiddenAudio" preload="auto"></audio>
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
-
-  <script>
-    const audio = document.getElementById('hiddenAudio');
-
-    function showToast(msg) {
-      const t = document.getElementById('toast');
-      t.textContent = msg;
-      t.classList.add('show');
-      clearTimeout(showToast._timer);
-      showToast._timer = setTimeout(() => t.classList.remove('show'), 2000);
-    }
-
-    document.addEventListener('click', async (e) => {
-      const a = e.target.closest('a.play');
-      if (!a) return;
-      e.preventDefault(); // resta sulla homepage
-
-      const src = a.getAttribute('href');
-      try {
-        if (audio.src !== src) {
-          audio.pause();
-          audio.currentTime = 0;
-          audio.src = src;
-        }
-        await audio.play();
-        showToast('Riproduzione avviata 🎵');
-      } catch (err) {
-        console.error(err);
-        showToast('Errore: impossibile riprodurre.');
-      }
-    });
-  </script>
+  
 </body>
 </html>
+
+
+
+
+
 
